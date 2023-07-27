@@ -5,3 +5,6 @@
 __pycache__/
 .cache/
 .idea/
+ddim_imgs/
+analysis/
+output/

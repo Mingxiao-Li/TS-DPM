@@ -27,7 +27,7 @@ from tqdm.auto import tqdm
 
 from dataset import get_dataset, inverse_data_transform
 from model.ema import EMAHelper
-
+from tqdm import tqdm 
 
 def get_optim(params, config):
     if config['optimizer'] == 'adam':
@@ -159,7 +159,7 @@ class Runner(object):
         seq = range(0, self.diffusion_step, skip)
         seq_next = [-1] + list(seq[:-1])
         image_num = 0
-
+   
         config = self.config['Dataset']
         if mpi_rank == 0:
             my_iter = tqdm(range(total_num // n + 1), ncols=120)
@@ -169,9 +169,8 @@ class Runner(object):
         for _ in my_iter:
             noise = th.randn(n, config['channels'], config['image_size'],
                              config['image_size'], device=self.device)
-
+    
             img = self.sample_image(noise, seq, model, pflow)
-
             img = inverse_data_transform(config, img)
             for i in range(img.shape[0]):
                 if image_num+i > total_num:
@@ -203,8 +202,8 @@ class Runner(object):
 
                 start = True
                 n = noise.shape[0]
-
-                for i, j in zip(reversed(seq), reversed(seq_next)):
+          
+                for i, j in tqdm(zip(reversed(seq), reversed(seq_next)),total=len(seq)):
                     t = (th.ones(n) * i).to(self.device)
                     t_next = (th.ones(n) * j).to(self.device)
 

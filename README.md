@@ -2,7 +2,7 @@
 This repo contains the official implementation for the paper [Alleviating Exposure Bias in Diffusion Models through Sampling with Shifted Time Steps](https://arxiv.org/pdf/2305.15583.pdf)  
 
 
-by [Mingxiao Li*](https://github.com/Mingxiao-Li), Tingyu Qu*, Ruicong Yao, Wei Sun, Marie-Francine Moens. International Conference on Representation Learning 2024 (ICLR'24).
+by [Mingxiao Li*]([https://github.com/Mingxiao-Li](https://scholar.google.com/citations?user=0t2f7joAAAAJ&hl=en)), [Tingyu Qu*](https://scholar.google.com/citations?user=d18-zLYAAAAJ&hl=en), Ruicong Yao, Wei Sun, Marie-Francine Moens. International Conference on Representation Learning 2024 (ICLR'24).
 
 ## Abstract
 <div stype="text-align: left;">

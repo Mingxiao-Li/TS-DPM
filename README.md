@@ -26,7 +26,6 @@ git clone https://github.com/Mingxiao-Li/TS-DPM.git
 cd  TS-DPM
 conda env create -f environment.yml
 ```
-## Prepare Dataset for Evaluation
 
 ## How to Run Different Samplers?
 ```
@@ -94,6 +93,48 @@ python run_generate.py \
 --time_shift \
 --window_size 10 \
 --cut_off_value 900
+```
+Example of running es-ddim sampler using cifar-10 DDIM backbone:
+```
+python run_generate.py \
+--config ddim_cifar10.yml \
+--model DDIM \
+--model_path /models/ddim_cifar10.ckpt \
+--sampler pnm_solver \
+--batch_size 128 \
+--total_num_imgs 50000 \
+--method euler \
+--sample_speed 100 \
+--dataset celeba \
+--scale_method \    # specify the scale method
+--fix_scale 1.0012 \  # the scale used in es-sampler
+```
+
+## Evaluate FID Score
+```
+python -m pytorch_fid path_to_the_dataset  path_to_the_generated_images
+```
+
+## Acknowledgements
+A large part of the code is inheritated from previous works: [DDIM](https://arxiv.org/pdf/2010.02502.pdf),[PNDM](https://arxiv.org/pdf/2202.09778.pdf), [DPM-Solver](https://arxiv.org/abs/2206.00927), and [DEIS](https://arxiv.org/abs/2204.13902). We express our gratitude for their generous sharing of their code with the public. We also extend our appreciation to authors of [DDIM](https://arxiv.org/pdf/2010.02502.pdf) and [DDPM](https://arxiv.org/pdf/2006.11239.pdf) for openly sharing their pretrained checkpoints.
+
+## Citation
+If you find our work useful, please feel free to cite by
+```
+@article{li2023alleviating,
+  title={Alleviating Exposure Bias in Diffusion Models through Sampling with Shifted Time Steps},
+  author={Mingxiao Li and Tingyu Qu and Ruicong Yao and Wei Sun and Marie-Francine Moens},
+  journal={International Conference on Learning Representations},
+  year={2024}
+}
+```
+```
+@article{ning2023elucidating,
+  title={Elucidating the Exposure Bias in Diffusion Models},
+  author={Ning, Mang and Li, Mingxiao and Su, Jianlin and Salah, Albert Ali and Ertugrul, Itir Onal},
+  journal={arXiv preprint arXiv:2308.15321},
+  year={2023}
+}
 ```
 
 

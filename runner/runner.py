@@ -151,7 +151,8 @@ class Runner(object):
 
         model.load_state_dict(th.load(self.args.model_path, map_location=device), strict=True)
         model.eval()
-
+        print("Loading model from -- >", self.args.model_path)
+        
         n = config['batch_size']
         total_num = config['total_num']
 
@@ -191,7 +192,6 @@ class Runner(object):
                     drift = self.schedule.denoising(x, None, t, model, pflow=pflow)
                     drift = drift.cpu().numpy().reshape((-1,))
                     return drift
-
                 solution = integrate.solve_ivp(drift_func, (1, 1e-3), noise.cpu().numpy().reshape((-1,)),
                                                rtol=tol, atol=tol, method='RK45')
                 img = th.tensor(solution.y[:, -1]).reshape(shape).type(th.float32)

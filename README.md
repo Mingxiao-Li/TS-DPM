@@ -110,7 +110,7 @@ python run_generate.py \
 --fix_scale 1.0012 \  # the scale used in es-sampler
 ```
 
-## Evaluate FID Score
+## Evaluation
 ```
 python -m pytorch_fid path_to_the_dataset  path_to_the_generated_images
 ```

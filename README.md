@@ -26,4 +26,74 @@ git clone https://github.com/Mingxiao-Li/TS-DPM.git
 cd  TS-DPM
 conda env create -f environment.yml
 ```
+## Prepare Dataset for Evaluation
+
+## How to Run Different Samplers?
+```
+python run_generate.py
+--config   # the path to the config file (eg ./config/ddim-cifar10.yml), which contains the configurations of dataset and model
+--model DDIM # by default, we use ddim
+--model_path # the path to save pretrained model weights
+--sampler  # select diffusion samplers, in our implementation this could be pnm_solver, dpm-solver,or deis 
+--batch_size 512  
+--total_num_img 50000 
+--method   # for pndm_solver, this args specify the oder of sovler,eg: f-pndm(4th order), s-pndm(2nd order) euler(1st order). For dpm-solver and deis, this arg does nothing. 
+--sample_speed # number of sampling steps 
+--dataset  # which dataset (cifar, celeba, LSUN..)
+--time-shift  # if use TS algorithm
+--window_size # specify the window size used in TS algorithm
+--cut_off_value # specify the cut of value used in TS algorithm
+```
+
+Example of running F-PNDM (4th order) solver with TS using cifar-10 DDIM backbone:
+```
+python run_generate.py \
+--config ddim_cifar10.yml \
+--model DDIM \
+--model_path /TS-DPM/models/ddim_cifar10.ckpt \
+--sampler pnm_solver \
+--batch_size 256 \
+--total_num_imgs 50000 \
+--method f_pndm \
+--sample_speed 100 \
+--dataset cifar \
+--time_shift \
+--window_size 5 \
+--cut_off_value 550
+```
+Example of running dpm solver with TS using cifar-10 DDIM backbone:
+```
+python run_generate.py \
+--config ddim_cifar10.yml \
+--model DDIM \
+--model_path /models/ddim_cifar10.ckpt \
+--sampler dpm-solver \
+--batch_size 1024 \
+--total_num_imgs 50000 \
+--sample_speed 5 \
+--dataset cifar \
+--method dpm-solver-order2-w30-c300 \ # here is just the name of the file to save generated images
+--time_shift \
+--window_size 30 \
+--cut_off_value 300
+```
+Example of running deis solver with TS using cifar-10 DDIM backbone:
+```
+CUDA_DEVICE_ORDER="PCI_BUS_ID" \
+CUDA_VISIBLE_DEVICES=1 \
+python run_generate.py \
+--config ddim_cifar10.yml \
+--model DDIM \
+--model_path /models/ddim_cifar10.ckpt \
+--sampler deis \
+--batch_size 1024 \
+--total_num_imgs 50000 \
+--sample_speed 5 \
+--dataset cifar \
+--method deis-order2-ts-w10-cutoff-900 \ # here is just the name of the file to save generated images
+--time_shift \
+--window_size 10 \
+--cut_off_value 900
+```
+
 

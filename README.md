@@ -18,4 +18,12 @@ This codebase comprises the integration of our TS-method with a wide array of po
 
 For the implementation of our method on [ADM](https://arxiv.org/pdf/2105.05233.pdf) backbone, please visit [this repo](https://github.com/tingyu215/TS-DPM-ADM).
 
+This code base also contains the implementation of ES-Samplers on original DPM backbone proposed in **[Elucidating The Exposure Bias in Diffusion Models](https://arxiv.org/pdf/2308.15321.pdf)** by Mang Ning, Mingxiao Li, Jianlin Su, Albert Ali Salah, and Itir Onal Ertugrul. For the implementarions of ES-Samplers on [ADM](https://arxiv.org/pdf/2105.05233.pdf) and [EDM](https://arxiv.org/pdf/2206.00364.pdf), please visit [ADM-ES repo] (https://github.com/forever208/ADM-ES) and [EDM-ES repo](https://github.com/forever208/EDM-ES).
+
 ## Installation
+```
+git clone https://github.com/Mingxiao-Li/TS-DPM.git
+cd  TS-DPM
+conda env create -f environment.yml
+```
+

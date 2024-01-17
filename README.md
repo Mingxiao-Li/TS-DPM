@@ -14,11 +14,11 @@ Denoising Diffusion Probabilistic Models (DDPM) have shown remarkable efficacy i
 
 ## What does this codebase contain ?
 
-This codebase comprises the integration of our TS-method with a wide array of popular diffusion samplers including [DDIM](https://arxiv.org/pdf/2010.02502.pdf), [PNDM](https://arxiv.org/pdf/2202.09778.pdf), [DPM-Solver](https://arxiv.org/abs/2206.00927), and [DEIS] (https://arxiv.org/abs/2204.13902). 
+This codebase comprises the integration of our TS-method with a wide array of popular diffusion samplers including [DDIM](https://arxiv.org/pdf/2010.02502.pdf), [PNDM](https://arxiv.org/pdf/2202.09778.pdf), [DPM-Solver](https://arxiv.org/abs/2206.00927), and [DEIS](https://arxiv.org/abs/2204.13902). 
 
 For the implementation of our method on [ADM](https://arxiv.org/pdf/2105.05233.pdf) backbone, please visit [this repo](https://github.com/tingyu215/TS-DPM-ADM).
 
-This code base also contains the implementation of ES-Samplers on original DPM backbone proposed in **[Elucidating The Exposure Bias in Diffusion Models](https://arxiv.org/pdf/2308.15321.pdf)** by Mang Ning, Mingxiao Li, Jianlin Su, Albert Ali Salah, and Itir Onal Ertugrul. For the implementarions of ES-Samplers on [ADM](https://arxiv.org/pdf/2105.05233.pdf) and [EDM](https://arxiv.org/pdf/2206.00364.pdf), please visit [ADM-ES repo] (https://github.com/forever208/ADM-ES) and [EDM-ES repo](https://github.com/forever208/EDM-ES).
+This code base also contains the implementation of ES-Samplers on original DPM backbone proposed in **[Elucidating The Exposure Bias in Diffusion Models](https://arxiv.org/pdf/2308.15321.pdf)**(ICLR'24) by Mang Ning, Mingxiao Li, Jianlin Su, Albert Ali Salah, and Itir Onal Ertugrul . For the implementarions of ES-Samplers on [ADM](https://arxiv.org/pdf/2105.05233.pdf) and [EDM](https://arxiv.org/pdf/2206.00364.pdf), please visit [ADM-ES repo](https://github.com/forever208/ADM-ES) and [EDM-ES repo](https://github.com/forever208/EDM-ES).
 
 ## Installation
 ```

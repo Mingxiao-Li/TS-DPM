@@ -233,24 +233,22 @@ def calculate_fid_given_paths(paths, batch_size, device, dims, num_workers=1):
     for p in paths:
         if not os.path.exists(p):
             raise RuntimeError('Invalid path: %s' % p)
-
+    
     block_idx = InceptionV3.BLOCK_INDEX_BY_DIM[dims]
-
+    device = torch.device("cuda" if device== "cuda" else "cpu")
     model = InceptionV3([block_idx]).to(device)
-
     m1, s1 = compute_statistics_of_path(paths[0], model, batch_size,
                                         dims, device, num_workers)
     m2, s2 = compute_statistics_of_path(paths[1], model, batch_size,
                                         dims, device, num_workers)
     fid_value = calculate_frechet_distance(m1, s1, m2, s2)
-
+    
     return fid_value
 
 
 
 if __name__ =="__main__":
     args = parser.parse_args()
-    print(args.batch_size)
     fid_value = calculate_fid_given_paths(
         paths=args.path,
         batch_size=args.batch_size,
@@ -258,4 +256,8 @@ if __name__ =="__main__":
         dims=args.dims,
         num_workers=args.num_workers
     )
+    print("-------------")
+    paths=args.path
+    print(paths[0].split("/")[-1])
     print(fid_value)
+    print("-------------")

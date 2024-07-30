@@ -1,4 +1,4 @@
-# [ICLR-2024]Alleviating Exposure Bias in Diffusion Models through Sampling with Shifted Time Steps
+# [ICLR-2024] Alleviating Exposure Bias in Diffusion Models through Sampling with Shifted Time Steps
 This repo contains the official implementation for the paper [Alleviating Exposure Bias in Diffusion Models through Sampling with Shifted Time Steps](https://arxiv.org/pdf/2305.15583.pdf)  
 
 
